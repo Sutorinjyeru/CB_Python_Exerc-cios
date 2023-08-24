@@ -9,19 +9,17 @@ dicio = {}
 
 student = input("Aluno:\n")
 
+
 def main():
     average_ = 0
-    for _ in range(3):    
+    for _ in range(3):
         discipline = input("Disciplina:\n")
         note = int(input("Nota:\n"))
         average_ += note
         dicio[discipline] = note
 
-def average(x,y):
-    return x/y
-
-def result():
-    print(f"Aluno:{student}, disciplinas:{dicio}, média: {média}")
+    print(f"Aluno:{student}, disciplinas:{dicio}, média: {average_/3}")
     print(dicio)
+
 
 main()
