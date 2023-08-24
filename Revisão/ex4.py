@@ -8,6 +8,5 @@ band = requests.get(
 result = band.json()
 
 
-for c in result:
-    if 
-        print()
+for c in result ["results"]:
+    print(c["trackName"])
