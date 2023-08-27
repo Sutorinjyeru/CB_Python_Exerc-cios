@@ -9,16 +9,11 @@ class Aluno():
         self.nome = nome
         self.nota = nota
 
+    def greater(x, y):
+        print(f"O maior é: {x.nome}" * (x.nota > y.nota),
+              f"O maior é: {y.nome}" * (y.nota > x.nota))
 
-def maior(num1, num2):
-    if num1 > num2:
-        return num1
-    else:
-        return num2
 
-def main():
-    Carlos = Aluno("Carlos", 9)
-    #Joestrela = Aluno("Joseph", 7)
-    print(type (Carlos))
-
-main()
+Carlos = Aluno("Carlos", 9)
+Joestrela = Aluno("Joseph", 6)
+Aluno.greater(Joestrela, Carlos)
