@@ -1,0 +1,1 @@
+from ex72 import somar_numeros
