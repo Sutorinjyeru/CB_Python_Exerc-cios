@@ -3,25 +3,30 @@
 # implementam esse método para calcular suas respectivas áreas.
 
 class Shape:
-    def __init__(self, val, value):
-        self.val = val
-        self.value = value
+    def __init__(self, form):
+        self.form = form
 
-    def calculate_area():
-        pass
-
+    def calculate_area(self, y=1):
+        if isinstance(self, Circle):
+            return 3.14 * (self.form **2)
+        elif isinstance(self, Triangle):
+            return (self.form * y) / 2
 
 class Circle(Shape):
-    def __init__(self, val, value):
-        super().__init__(val, value)
-
-    # def calculate_area(raio):
-        # return 3.14 * (raio **2)
-
+    def __init__(self, form):
+        super().__init__(form)
 
 class Triangle(Shape):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, form):
+        super().__init__(form)
 
-    # def calculate_area(base, altura):
-        # return (base * altura) / 2
+
+def main():
+    triangulosan = Triangle(30)
+    circlesan = Circle(32)
+
+    print(triangulosan.calculate_area(44))
+    print(circlesan.calculate_area(44))
+
+if __name__ == "__main__":
+    main()
