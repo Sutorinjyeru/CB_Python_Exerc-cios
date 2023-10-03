@@ -4,69 +4,36 @@
 # Permita que o programa remova
 # um aluno da lista.
 
-#Erros
-#GUI
-from random import choice
 import PySimpleGUI as sg
+# Erros
+# GUI
+from Class import Manager as Mg
+from Layout import Menu as M
 
-sg.theme('')
 
 def main():
     # Create list with the archive itens
     with open("Archive.txt") as file:
         allStudents = file.read()
         students = allStudents.split()
-
     while True:
-        print("Hello User, make your choice!")
-        mode = input(
-            "1:Choose a random student, 2:Add student, 3:Remove student, 4:Close\n")
-        if mode == "1":
-            random(students)
-        elif mode == "2":
-            student = input("Type the name you want to add.\n")
-            add(students, student)
-        elif mode == "3":
-            student = input("Type the name you want to remove.\n")
-            remove(students, student)
-        elif mode == "4":
-            file.close()
+        event, values = M.window.read()
+        if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
             break
+        if event == 'Choose a random student':
+            M.window.close()
+            event, values = M.window2.read()
+            Mg.random_student(students)
+        if event == 'Add student':
+            M.window.close()
+            event, values = M.window3.read()
+            Mg.add_student(students, values[0])
+        if event == 'Remove Student':
+            M.window.close()
+            event, values = M.window4.read()
+            Mg.remove_student(students, values[0])
 
-
-def random(sList=list):
-    print(choice(sList))
-
-
-def add(sList=list,var=str):
-    # Remove All
-    with open("Archive.txt", "w") as file:
-        file.write("")
-    #Create new
-    with open("Archive.txt", "a") as file:
-        sList.append(var)
-        for name in sList:
-            file.write(name+"\n")    
-
-
-def remove(sList=list, var=str):
-    with open("Archive.txt") as file1:
-        items = file1.read()
-        newList = items.split()
-    #Remove All
-    with open("Archive.txt", "w") as file:
-        file.write("")
-    #Create new
-    try:
-        with open("Archive.txt", "a") as file:
-            sList.remove(var)
-            for name in sList:
-                file.write(name+"\n")
-    except ValueError:
-        print("Name not in list, try again. ")
-        with open("Archive.txt", "w") as file1:
-            for i in newList:
-                file1.write(i+"\n")
+    M.window.close()
 
 
 if __name__ == "__main__":
