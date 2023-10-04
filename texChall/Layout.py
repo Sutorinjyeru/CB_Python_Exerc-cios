@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-
+from Class import Manager as Mg
 
 class Menu:
     sg.theme('DarkAmber')   # Add a touch of color
@@ -11,10 +11,9 @@ class Menu:
     Remove_Button = sg.Button('Remove Student', enable_events=True)
 
     layout = [[sg.Text('Hello User, make your choice!')],
-              [Choose_Button, Add_Button, Remove_Button]]
+              [Choose_Button, Add_Button, Remove_Button],]
 
-    layout2 = [[sg.Text('Choose a random student'), sg.InputText()],
-               [sg.Button('Enter', enable_events=True)]]
+    layout2 = [[sg.Text(Mg.random_student())]]
 
     layout3 = [[sg.Text('Type the name you want to add.'), sg.InputText()],
                [sg.Button('Enter', enable_events=True)]]
